@@ -52,9 +52,9 @@ func ControlProcess(cli *client.ProxyClient, wait *sync.WaitGroup) {
 // loop for reading messages from frpc after control connection is established
 func msgReader(cli *client.ProxyClient, c *conn.Conn, msgSendChan chan interface{}) error {
 	// for heartbeat
-	var heartbeatTimeout bool = false
+	// var heartbeatTimeout bool = false
 	timer := time.AfterFunc(time.Duration(client.HeartBeatTimeout)*time.Second, func() {
-		heartbeatTimeout = true
+		// heartbeatTimeout = true
 		c.Close()
 		log.Error("ProxyName [%s], heartbeatRes from frps timeout", cli.Name)
 	})

@@ -125,9 +125,9 @@ func noticeUserConn(s *server.ProxyServer, msgSendChan chan interface{}) {
 // loop for reading messages from frpc after control connection is established
 func msgReader(s *server.ProxyServer, c *conn.Conn, msgSendChan chan interface{}) error {
 	// for heartbeat
-	var heartbeatTimeout bool = false
+	// var heartbeatTimeout bool = false
 	timer := time.AfterFunc(time.Duration(server.HeartBeatTimeout)*time.Second, func() {
-		heartbeatTimeout = true
+		// heartbeatTimeout = true
 		s.Close()
 		c.Close()
 		log.Error("ProxyName [%s], client heartbeat timeout", s.Name)
